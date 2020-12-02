@@ -1,0 +1,67 @@
+library(readr)
+
+indodapoer <- read_tsv("https://dqlab-dataset.s3-ap-southeast-1.amazonaws.com/indodapoer.tsv.gz")
+nrow(indodapoer)
+ncol(indodapoer)
+
+install.packages("janitor", repos = "http://cran.us.r-project.org")
+library(janitor)
+
+head(colnames(indodapoer), 15)
+indodapoer <- clean_names(indodapoer)
+head(colnames(indodapoer), 15)
+
+
+library(stringr)
+library(dplyr)
+
+library(stringr)
+library(dplyr)
+
+pdrb_pjawa <- 
+  indodapoer %>%
+  filter(
+    area_name %in% c(
+      "Banten, Prop.",
+      "DKI Jakarta, Prop.",
+      "Jawa Barat, Prop.",
+      "Jawa Tengah, Prop.",
+      "DI Yogyakarta, Prop.",
+      "Jawa timur, Prop."
+    )
+  ) %>%
+  transmute(
+    provinsi = str_remove(area_name, ", Prop."),
+    tahun = year,
+    pdrb_nonmigas = total_gdp_excluding_oil_and_gas_in_idr_million_constant_price) %>% 
+  filter(!is.na(pdrb_nonmigas))
+
+glimpse(pdrb_pjawa)
+
+### TREND PDRB
+library(dplyr)
+library(ggplot2)
+library(forcats)
+
+pdrb_pjawa %>%
+  mutate(
+    provinsi = fct_reorder2(provinsi, tahun, pdrb_nonmigas)
+  ) %>%
+  ggplot(aes(tahun, pdrb_nonmigas, colour = provinsi)) +
+  geom_line()
+
+### 
+library(ggplot2)
+library(dplyr)
+library(directlabels)
+
+pdrb_pjawa %>% 
+  ggplot(aes(tahun, pdrb_nonmigas)) +
+  geom_line(aes(colour = provinsi), show.legend = FALSE) +
+  geom_dl(
+    aes(label = provinsi), 
+    method = "last.points",
+    position = position_nudge(x = 0.3) # agar teks tidak berhimpitan dengan garis
+  )
+  
+  
