@@ -1,0 +1,3 @@
+chocolates_adjmean <- readRDS("chocolates_adjmean.rds")
+chocolates_adjmean
+dim(chocolates_adjmean)
