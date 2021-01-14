@@ -1,0 +1,9 @@
+Pembukaan - Part 2
+Ya! Hal tersebut sangatlah wajar dan itu pula yang juga saya alami saat melakukan analisis data sensoris. Ada banyak sekali paket dan fungsi yang dijalankan hingga akhirnya dapat dilakukan interpretasi untuk menghasilkan suatu kesimpulan. Berlatarbelakang hal tersebut, akhirnya saya mengembangkan paket R untuk analisis data sensoris sehingga dapat dilakukan dengan lebih mudah dan cepat. Paket tersebut bernama sensehubr dan tersedia di aswansyahputra/github.io/sensehubr.
+
+Paket sensehubr dibangun dengan menggunakan tidyverse philosophy sehingga memiliki fungsi dan kinerja yang konsisten. Ada tiga fungsi utama di sensehubr untuk melakukan analisis data:
+
+specify()
+analyse()
+visualise()
+Pada bagian selajutnya saya akan ditunjukan prosedur analisis data chocolates dengan menggunakan paket sensehubr. Apakah Anda tertarik?
