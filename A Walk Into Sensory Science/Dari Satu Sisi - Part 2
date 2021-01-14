@@ -1,0 +1,1 @@
+anova(model_bitterness)
