@@ -1,0 +1,1 @@
+SELECT product_id, AVG(pinalty),COUNT(customer_id) as total FROM invoice GROUP BY product_id HAVING COUNT(customer_id) > 20;
